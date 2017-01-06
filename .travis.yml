@@ -1,0 +1,15 @@
+env:
+  global:
+    - secure: "ll8N1HnGvjY4fWxHWnLGljlP3KsEYWzfN5qmbretGOVWYKx8ke+TBpZRmv1y2sEH1E1GvSLgfRcrVwn6fiuN0xRm+Iv2kmATjBIhago4FdKjQP1qTSGwsNOGS5O+QABwswF3IC+rmEJjVB98ahZZ/eL0Hwq5A1qvt9n7bS5FD2OF9cIiMKfe535bNFHwN4y7W5j1C1r/cNw76yM5Yv+vSl09IfwKhzXyD3HZ4ctGzDjFhXN3EFiqZ+4m9RuFtoR3ngtqx5ugcQJj23iQyqBk449V6GEd2ATWzTpSCDdSfT2lMxkyt2Y+TIxUxQzBaHExP5GGQZsiWCwyNCj0naM57xnlftIKVQarSxdIJ0m3G8gXwiKCtP/O32X7L5fZ/Q1VG5hNz+9JUwX/hm5OAz1I8vRs66Hcll4M02tZyVWGjQCBSDmP9siZdJpnyKtUgsI1xwnUUHRGlsQmSUuNARU+SRRTd2afNHMXi7zo+VcRt9pI28z8S4v+Xtaw3bk9k0q4g/wnO8u6dlt1YF90P7UopJJonKEto+Tm1gsD3DrJCjoLoDDpSoleyonZY5l6ybuf46pKtAYuL9HAITU5BZc6fHSg5Xb/k5jXom7BkUqSQFOOj7uU4VJKTPqJNB/6E+ezKcmNTiFQ9YTGmfHMWODbw/KPUrUcMlUQ0BwfaljpHY4="
+
+after_script:
+  - mkdir build
+  - cd build
+  - touch CNAME
+  - echo "a.kubikvest.xyz"
+  - git init
+  - git config user.name "deploy-travis"
+  - git config user.email "deploy-travis"
+  - git add .
+  - git commit -m "deployed to gh-pages"
+  - git push --force --quiet "https://$GH_TOKEN@github.com/kubikvest/front-release.git" master:master
