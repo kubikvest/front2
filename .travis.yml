@@ -33,3 +33,6 @@ after_script:
       git commit -m "deployed to gh-pages";
       git push --force --quiet "https://$GH_TOKEN@github.com/kubikvest/front-test.git" master:master;
     fi
+
+notifications:
+  slack: kubikvest:vzWICu78pcBH0EKby2tbJSwW
