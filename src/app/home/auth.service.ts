@@ -8,14 +8,14 @@ import 'rxjs/Rx';
 export class AuthService {
     constructor(private http:Http) {
     }
-    
+
     auth(code:string):Observable<{t:string}> {
         return this.http
-            .get(`http://10.0.3.5:8300/auth?code=222`)
+            .get(`https://api.kubikvest.xyz/auth?code=${code}`)
             .map((response) => response.json() as {t:string})
             .catch(this.handleError);
     }
-    
+
     private handleError(error:any) {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
