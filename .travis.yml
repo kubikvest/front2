@@ -13,8 +13,11 @@ script:
 
 after_script:
   - echo $TRAVIS_PULL_REQUEST
-  - echo $TRAVIS_PULL_REQUEST_BRANCH
+  - echo $TRAVIS_BRANCH
+  - sudo chown -R travis dist
+  - ls -la
   - cd dist
+  - ls -la
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
       touch CNAME;
       echo "a.kubikvest.xyz" >> CNAME;
