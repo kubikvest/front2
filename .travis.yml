@@ -15,7 +15,7 @@ after_script:
   - echo $TRAVIS_PULL_REQUEST
   - echo $TRAVIS_PULL_REQUEST_BRANCH
   - cd dist
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+  - if [ "$TRAVIS_PULL_REQUEST" == "true" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
       touch CNAME;
       echo "a.kubikvest.xyz" >> CNAME;
       git init;
@@ -25,7 +25,7 @@ after_script:
       git commit -m "deployed to gh-pages";
       git push --force --quiet "https://$GH_TOKEN@github.com/kubikvest/front-release.git" master:master;
     fi
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
       touch CNAME;
       echo "test.kubikvest.xyz" >> CNAME;
       git init;
