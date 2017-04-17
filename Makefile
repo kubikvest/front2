@@ -26,5 +26,11 @@ build: dep
 		$(NODE_IMG) \
 		npm run build
 
+clean:
+	@docker run --rm -it \
+		-v $(CURDIR):/data \
+		-w /data \
+		$(NODE_IMG) \
+		rm -rf node_modules
 test:
 	@echo Tests...
