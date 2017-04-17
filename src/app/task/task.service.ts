@@ -2,6 +2,7 @@ import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import { Task } from './task.model';
+import { environment } from '../environment';
 
 import 'rxjs/Rx';
 
@@ -12,7 +13,7 @@ export class TaskService {
 
     list(token:string):Observable<{tasks:Task[], token:string}> {
         return this.http
-            .get(`https://api.kubikvest.xyz/list-quest?t=${token}`)
+            .get(`${environment.protocol}://${environment.base}/list-quest?t=${token}`)
             .map((response:Response) => {
 
                 return {

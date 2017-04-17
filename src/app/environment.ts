@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    base: 'api.kubikvest.xyz',
-    protocol: 'https'
+    base: '10.0.3.5:8300',
+    protocol: 'http'
 };

@@ -1,6 +1,7 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import { environment } from '../environment';
 
 import 'rxjs/Rx';
 
@@ -11,7 +12,7 @@ export class AuthService {
 
     auth(code:string):Observable<{t:string}> {
         return this.http
-            .get(`https://api.kubikvest.xyz/auth?code=${code}`)
+            .get(`${environment.protocol}://${environment.base}/auth?code=${code}`)
             .map((response) => response.json() as {t:string})
             .catch(this.handleError);
     }
