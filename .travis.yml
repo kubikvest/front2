@@ -13,11 +13,12 @@ script:
 
 after_script:
   - echo $TRAVIS_PULL_REQUEST
-  - echo $TRAVIS_PULL_REQUEST_BRANCH
+  - echo $TRAVIS_BRANCH
+  - sudo chown -R travis dist
   - cd dist
   - if [ "$TRAVIS_PULL_REQUEST" == "true" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
       touch CNAME;
-      echo "a.kubikvest.xyz" >> CNAME;
+      echo "a.kubikvest.xyz" > CNAME;
       git init;
       git config user.name "deploy-travis";
       git config user.email "deploy-travis";
@@ -27,7 +28,7 @@ after_script:
     fi
   - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
       touch CNAME;
-      echo "test.kubikvest.xyz" >> CNAME;
+      echo "test.kubikvest.xyz" > CNAME;
       git init;
       git config user.name "deploy-travis";
       git config user.email "deploy-travis";
