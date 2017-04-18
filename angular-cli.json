@@ -1,8 +1,8 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "project": {
-        "version": "1.0.0-beta.16",
-        "name": "angular2-webpack"
+        "version": "0.0.1",
+        "name": "kubikvest"
     },
     "apps": [
         {
