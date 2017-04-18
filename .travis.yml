@@ -13,26 +13,12 @@ after_script:
   - echo $TRAVIS_BRANCH
   - sudo chown -R travis dist
   - cd dist
-  - if [ "$TRAVIS_PULL_REQUEST" == "true" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
-      touch CNAME;
-      echo "a.kubikvest.xyz" > CNAME;
-      git init;
-      git config user.name "deploy-travis";
-      git config user.email "deploy-travis";
-      git add .;
-      git commit -m "deployed to gh-pages";
-      git push --force --quiet "https://$GH_TOKEN@github.com/kubikvest/front-release.git" master:master;
-    fi
-  - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
-      touch CNAME;
-      echo "test.kubikvest.xyz" > CNAME;
-      git init;
-      git config user.name "deploy-travis";
-      git config user.email "deploy-travis";
-      git add .;
-      git commit -m "deployed to gh-pages";
-      git push --force --quiet "https://$GH_TOKEN@github.com/kubikvest/front-test.git" master:master;
-    fi
+  - 'if [ "$TRAVIS_BRANCH" == "master" ]; then \
+      make pull_release USER_NAME=deploy-travis USER_EMAIL=deploy-travis \
+    fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then \
+      make pull_test USER_NAME=deploy-travis USER_EMAIL=deploy-travis \
+    fi'
 
 notifications:
   slack: kubikvest:vzWICu78pcBH0EKby2tbJSwW
