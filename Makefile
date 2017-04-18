@@ -6,7 +6,7 @@ $(NODE_MODULES_DIR): package.json
 		-v $(CURDIR):/data \
 		-w /data \
 		$(NODE_IMG) \
-		npm install --quite --production
+		npm install --quite
 
 dep: $(NODE_MODULES_DIR)
 
