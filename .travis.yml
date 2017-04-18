@@ -12,12 +12,11 @@ after_script:
   - echo $TRAVIS_PULL_REQUEST
   - echo $TRAVIS_BRANCH
   - sudo chown -R travis dist
-  - cd dist
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" && "$TRAVIS_BRANCH" == "master" ]; then
-      make -C ./.. pull_release USER_NAME=deploy-travis USER_EMAIL=deploy-travis;
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+      make pull_release USER_NAME=deploy-travis USER_EMAIL=deploy-travis;
     fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-      make -C ./.. pull_test USER_NAME=deploy-travis USER_EMAIL=deploy-travis;
+      make pull_test USER_NAME=deploy-travis USER_EMAIL=deploy-travis;
     fi'
 
 notifications:
