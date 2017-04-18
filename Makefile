@@ -35,13 +35,13 @@ clean:
 
 pull_release:
 	@touch CNAME;
-    @echo "a.kubikvest.xyz" > CNAME;
-    @git init;
-    @git config user.name "$(USER_NAME)";
-    @git config user.email "$(USER_EMAIL)";
-    @git add .;
-    @git commit -m "deployed to gh-pages";
-    @git push --force --quiet "https://$(GH_TOKEN)@github.com/kubikvest/front-release.git" master:master;
+	@echo "a.kubikvest.xyz" > CNAME
+	@git init
+	@git config user.name "$(USER_NAME)";
+	@git config user.email "$(USER_EMAIL)";
+	@git add .;
+	@git commit -m "deployed to gh-pages";
+	@git push --force --quiet "https://$(GH_TOKEN)@github.com/kubikvest/front-release.git" master:master;
 
 pull_test:
 	@touch CNAME;
